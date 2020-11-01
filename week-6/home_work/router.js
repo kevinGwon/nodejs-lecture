@@ -1,14 +1,15 @@
 const { response } = require('express');
 const fs = require('fs');
 
-module.exports = function(app) {
-  app.get('/get',function(req,res){
+module.exports = function (express, app) {
+  app.use(express.static('files'));
+  app.get('/get', function (req, res) {
     res.render('./login_get.html');
   });
-  app.get('/post',function(req,res){
+  app.get('/post', function (req, res) {
     res.render('./login_post.html');
   });
-  app.get('/display',function(req,res){
+  app.get('/display', function (req, res) {
     res.render('./display.html');
     console.log('Get Method');
 
@@ -18,7 +19,7 @@ module.exports = function(app) {
     //   res.end();
     // });
   });
-  app.post('/display',function(req,res){
+  app.post('/display', function (req, res) {
     res.render('./display.html');
     console.log('Post Method');
   });
