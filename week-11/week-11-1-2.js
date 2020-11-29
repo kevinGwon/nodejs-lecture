@@ -30,12 +30,14 @@ app.get('/', (req, res) => {
   });
 });
 
+// DELETE
 app.get('/delete/:id', (req, res) => {
   client.query('DELETE FROM products WHERE id=?', [req.params.id], () => {
     res.redirect('/');
   });
 });
 
+// INSERT
 app.get('/insert', (req, res) => {
   fs.readFile('insert.html', 'utf-8', (error, data) => {
     res.end(data);
